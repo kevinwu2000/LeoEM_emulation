@@ -1,0 +1,3 @@
+Average RTT: 0.44 seconds
+Maximum RTT: 1.54 seconds
+Minimum RTT: 0.09 seconds

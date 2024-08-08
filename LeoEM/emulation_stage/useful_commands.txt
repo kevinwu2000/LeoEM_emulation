@@ -1,0 +1,37 @@
+// route computation (run inside "route_stage")
+python3 precompute_path_15s_isl.py|precompute_path_15s_bp.py constellation output_filename sat_num cycle latitude_1 longitude_1 latitude_2 longitude_2 depression_angle elevation_angle
+
+- taipei to new york ISL
+python3 precompute_path_15s_isl.py StarLink StarLink_taipei_NY_ISL_path.log 1588 5731 25.032969 121.565414 40.712776 -74.005974 44.85 40
+
+//display
+export DISPLAY=192.168.142.1:0
+
+// runing emulation
+
+'run this in the background'
+python3 ~/pox/pox.py misc.learning_switch
+
+'ready to emulate'
+sudo mn -c
+
+'choose route and run'
+sudo python3 emulator.py StarLink_taipei_NY_ISL_path.log
+sudo python3 emulator.py Starlink_SD_Shanghai_15_ISL_path.log
+
+// pcap file processing
+
+'give permission to read the pcap'
+sudo chmod +r interface1.pcap
+
+'get handover from pcap'
+./get_handover.sh interface1.pcap handover.pcap handover.csv
+
+'SaTCP'
+sudo make -j 12
+sudo make modules_install -j 12
+sudo make install -j 12
+sudo reboot
+sudo sysctl net.ipv4.tcp_congestion_control=cubic
+gcc -o report_relay report_relay.c -lpthread
+./report_relay
