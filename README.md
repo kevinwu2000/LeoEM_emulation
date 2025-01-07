@@ -1,6 +1,6 @@
 # LeoEM Modification
 
-This repository contains modifications to the Low Earth Orbit Emulator (LeoEM) for studying throughput and round-trip time (RTT) in Low Earth Orbit (LEO) networks. The modifications focus testing throughput and RTT of LEO, and comparing them of SaTCP with traditional TCP.
+This repository contains modifications to the [Low Earth Orbit Emulator (LeoEM)](https://github.com/XuyangCaoUCSD/LeoEM) for studying throughput and round-trip time (RTT) in Low Earth Orbit (LEO) networks. The modifications focus testing throughput and RTT of LEO, and comparing them of SaTCP with traditional TCP.
 
 ## Running the Emulation
 
